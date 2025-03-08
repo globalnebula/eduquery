@@ -9,7 +9,7 @@ import os
 
 # Initialize Sentence Transformer model and Groq client
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-client = Groq(api_key='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')  # Replace with your actual API key
+client = Groq(api_key='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')  # Replace with your actual API key
 
 # Function to extract text from PDFs (Knowledge Base)
 def extract_text_from_pdf(pdf_file):
