@@ -60,7 +60,7 @@ def enhance_with_llm(retrieved_texts, query):
     user_message = {"role": "user", "content": query}
 
     completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="llama3-8b-8192",
         messages=[system_message, user_message],
         temperature=1,
         max_tokens=1024,
