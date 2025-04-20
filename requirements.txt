@@ -6,3 +6,4 @@ numpy
 groq
 streamlit
 requests
+tiktoken
