@@ -73,7 +73,7 @@ def enhance_with_llm(retrieved_texts, query):
     
     system_message = {
         "role": "system",
-        "content": "You are an AI teacher. Answer based on the context provided. If the context doesn't contain relevant information, use your knowledge to provide a helpful response."
+        "content": "You are an AI teacher. Answer based on the context provided. If the context doesn't contain relevant information, use your knowledge to provide a helpful response. Wxplain the concept intuitively, for everyon to understand very easily."
     }
     
     user_message = {
