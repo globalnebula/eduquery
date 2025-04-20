@@ -1,4 +1,3 @@
-
 import fitz
 from sentence_transformers import SentenceTransformer
 import faiss
@@ -9,7 +8,7 @@ import os
 
 # Initialize Sentence Transformer model and Groq client
 model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
-client = Groq(api_key='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')  # Replace with your actual API key
+client = Groq(api_key='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')  # API key directly in code
 
 # Function to extract text from PDFs (Knowledge Base)
 def extract_text_from_pdf(pdf_file):
@@ -50,7 +49,7 @@ def retrieve_top_k(query, index, texts, k=3):
     distances, indices = index.search(query_embedding, k)
     return [texts[i] for i in indices[0]]
 
-# Function to enhance retrieved text with LLM (Groq API)
+# Function to enhance retrieved text with LLM (Groq API) - UPDATED
 def enhance_with_llm(retrieved_texts, query):
     context = "\n".join(retrieved_texts)
     system_message = {
@@ -59,11 +58,12 @@ def enhance_with_llm(retrieved_texts, query):
     }
     user_message = {"role": "user", "content": query}
 
+    # Updated API call with max_completion_tokens instead of max_tokens
     completion = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=[system_message, user_message],
         temperature=1,
-        max_tokens=1024,
+        max_completion_tokens=1024,  # Updated parameter name
         top_p=1,
         stream=True,
         stop=None,
